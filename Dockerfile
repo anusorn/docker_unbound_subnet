@@ -36,11 +36,11 @@ RUN adduser unbound
 WORKDIR /usr/local/etc/unbound
 RUN cd /usr/local/etc/unbound && mv unbound.conf default_unbound.conf
 COPY ./unbound.conf /usr/local/etc/unbound
+RUN /usr/local/sbin/unbound
 
 EXPOSE 22
 
 EXPOSE 53
 EXPOSE 53/udp
 
-
-CMD ["./unbound","-dvvv"]
+CMD ["/usr/sbin/sshd","-D"]
